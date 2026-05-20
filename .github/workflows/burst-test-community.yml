@@ -1,0 +1,21 @@
+name: Burst Test - Community ARC (20 jobs)
+
+on:
+  workflow_dispatch:
+
+jobs:
+  burst-community:
+    runs-on: [self-hosted, linux, x64, community-arc]
+    strategy:
+      matrix:
+        job: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+      fail-fast: false
+    steps:
+      - name: Job Info
+        run: |
+          echo "=== Community ARC Burst Test Job ${{ matrix.job }} ==="
+          echo "Runner: $RUNNER_NAME"
+          echo "Started: $(date)"
+          sleep 30
+          echo "Completed: $(date)"
+
